@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/32378590/set-date-input-fields-max-date-to-today // type="date" min=today.
