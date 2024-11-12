@@ -7,7 +7,7 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+
 </head>
 
 <body>
@@ -15,66 +15,30 @@
         <img src="./img/Medacdent_logo" alt="MedacDent">
     </header>
     <main>
-        <form action="" method="post" enctype="multipart/form-data">
-            <fieldset>
-                <legend>Datos del paciente</legend>
-                <p>Nombre*: <input type="text" name="nombre" id="nombre" size="20" maxlength="20" placeholder="Nombre del paciente"
-                        required> </p>
-                <p>Apellidos*: <input type="text" name="apellidos" id="apellidos" size="40" maxlength="40"
-                        placeholder="Apellidos del paciente" required></p>
-                <p>Fecha de nacimiento*:
-                    <input type="date" name="nacimiento" id="nacimiento" max="2015-01-01" size="2" required>
-                </p>
-                <p>
-                    Documento de identidad*:
-                    <input list="ID" name="ID">
-                    <datalist id="ID">
-                        <option value="DNI">
-                        <option value="NIE">
-                        <option value="Pasaporte">
-                    </datalist>
-                    <input type="text" name="ID" id="ID" size="10" maxlength="9" required>
-                </p>
-                <p>
-                    Teléfono:
-                    <input type="text" name="Prefijo" id="Prefijo" size="1" value="+34" disabled>
-                    <input type="text" name="Teléfono" id="Teléfono" size="10" maxlength="9" pattern="\d{9}">
-                </p>
-                <p>
-                    Email*:
-                    <input type="email" name="email" id="email" size="15" required>
-                </p>
-                <p>
-                    Observaciones:<br>
-                    <textarea name="observaciones" rows="4" cols="27" maxlength="300"></textarea> <br>
-                </p>
-               
-            </fieldset>
-            <fieldset>
-                <legend>Cita</legend>
-                <p>Fecha proxima cita*: 
-                    <!--<input type="date" name="fecha cita" id="fechacita" min="11-11-2024"> REVISAR BIBLIOGRAFIA-->
-                    <!--<input type="time" name="hora cita" id="horacita" min="09:30:00" max="20:00:00" step="1800"> REVISAR BIBLIOGRAFIA-->
-                </p>
-
-            </fieldset>
-            <button type="submit">Aceptar</button>
+        <form id="my-form">
+            <!-- some dummy inputs -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre del paciente...">
+            <br>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age...">
+            <br>
+            <label for="hobby">Hobby:</label>
+            <input type="text" id="hobby" name="hobby" placeholder="Enter your hobby...">
+            <br>
+            <input type="submit" />
         </form>
+        <div id="result"></div>
 
-        <table>
+        <!--Tabla a imprimir resultados-->
+        <table id="tablacitas">
             <tr>
                 <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Fecha de Nacimiento</th>
-                <th>ID</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th>Observaciones</th>
-                <th>Fecha proxima cita</th>
-                <th>Hora proxima cita</th>
+                <th>age</th>
+                <th>Nombre</th>
             </tr>
         </table>
-
+        <script src='main.js'></script>
     </main>
     <footer>
         <a href="facebook.com"><img src="./img/facebook.png" alt=""></a>
