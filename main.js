@@ -1,26 +1,47 @@
 localStorage.clear();
 const form = document.getElementById("my-form"); // get the form element
+
+
+
+//Cuando hacemos el formulario y le damos a Aceptar
 form.addEventListener("submit", e => {
-  // detect once the submit button is clicked
-  e.preventDefault(); // Don't allow the form to redirect to another page
+  // detecta que hemos pusado aceptar
+  e.preventDefault(); // nos mantiene en la pagina
   const {
     elements
-  } = form; // Get input elements so we can retrieve their values
+  } = form; //metemos todos los datos en la constante elements
   let tabla = [];
+  //if localstore true miramos su length para el codigo, si no ponemos 1
+  if (JSON.parse(localStorage.getItem("save"))){
   const output = {
-    nombre: elements.nombre.value, // get name
-    age: +elements.age.value, // get age; the "+" in front converts it to a number
-    hobby: elements.hobby.value // get hobby
+    codigo: (JSON.parse(localStorage.getItem("save")).length+1),
+    nombre: elements.nombre.value, 
+    age: +elements.age.value, 
+    hobby: elements.hobby.value 
   };
-
-
+  tabla = tabla.concat(JSON.parse(localStorage.getItem('save')||'[]'));
   tabla.push(output);
 
-  tabla = tabla.concat(JSON.parse(localStorage.getItem('save')||'[]'));
   localStorage.setItem("save", JSON.stringify(tabla)); // save output to localStorage
-const tablacita = document.getElementById("tablacitas");
-let retrievedScores = JSON.parse(localStorage.getItem("save"))
-for (var i =0; i < retrievedScores.length; i++) {
-  tablacita.innerHTML += "<tr><td>" + retrievedScores[i].nombre + "</td><td>" + retrievedScores[i].age + "</td><td>" + retrievedScores[i].hobby + "</td></tr>";
-}
-});
+  const tablacita = document.getElementById("tablacitas");
+  let retrievedScores = JSON.parse(localStorage.getItem("save"))
+  console.log(JSON.parse(localStorage.getItem("save")).length-1);
+  console.log(output.codigo);
+    tablacita.innerHTML += "<tr><td>" + retrievedScores[output.codigo-1].nombre + "</td><td>" + retrievedScores[output.codigo-1].age + "</td><td>" + retrievedScores[output.codigo-1].codigo + "</td><td>" + retrievedScores[output.codigo-1].hobby + "</td></tr>";
+}else{
+    const output = {
+      codigo: 1,
+      nombre: elements.nombre.value, 
+      age: +elements.age.value, 
+      hobby: elements.hobby.value 
+    };
+    tabla = tabla.concat(JSON.parse(localStorage.getItem('save')||'[]'));
+    tabla.push(output);
+
+    localStorage.setItem("save", JSON.stringify(tabla)); // save output to localStorage
+    const tablacita = document.getElementById("tablacitas");
+    let retrievedScores = JSON.parse(localStorage.getItem("save"))
+    console.log(JSON.parse(localStorage.getItem("save")).length-1);
+    console.log(output.codigo-1);
+      tablacita.innerHTML += "<tr><td>" + retrievedScores[output.codigo-1].nombre + "</td><td>" + retrievedScores[output.codigo-1].age + "</td><td>" + retrievedScores[output.codigo-1].codigo + "</td><td>" + retrievedScores[output.codigo-1].hobby + "</td></tr>";
+  }});
