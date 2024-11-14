@@ -16,25 +16,38 @@
     </header>
     <main>
         <form id="my-form">
-            <!-- some dummy inputs -->
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre del paciente...">
-            <br>
-            <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos del paciente...">
-            <br>
-            <label for="id">ID:</label>
-            <input type="text" id="id" name="id" placeholder="id del paciente...">
-            <br>
-            <label for="fechanacimiento">Fecha de nacimiento:</label>
-            <input type="date" id="fechanacimiento" name="fechanacimiento">
-            <br>
-            <label for="telefono">Telefono:</label>
-            <input type="number" id="telefono" name="telefono" placeholder="Telefono del paciente...">
-            <br>
-            <label for="observaciones">Observaciones:</label>
-            <input type="text" id="observaciones" name="observaciones" placeholder="Enter your hobby...">
-            <br>
+            <fieldset>
+                <legend>Datos del paciente</legend>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre del paciente...">
+                <br>
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos del paciente...">
+                <br>
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" placeholder="id del paciente...">
+                <br>
+                <label for="fechanacimiento">Fecha de nacimiento:</label>
+                <input type="date" id="fechanacimiento" name="fechanacimiento">
+                <br>
+                <label for="telefono">Telefono:</label>
+                <input type="number" id="telefono" name="telefono" placeholder="Telefono del paciente...">
+                <br>
+                <label for="observaciones">Observaciones:</label>
+                <br>
+                <textarea id="observaciones" name="observaciones" placeholder="Observaciones" rows="4" cols="27"
+                    maxlength="300"></textarea>
+                <br>
+            </fieldset>
+            <fieldset>
+                <legend>Cita</legend>
+                <label for="fechacita">fecha de la cita:</label>
+                <input type="date" id="fechacita" name="fechacita" min="">
+                <br>
+                <label for="horacita">hora de la cita:</label>
+                <select name="hora" id="hora" required></select>
+                <select name="minuto" id="minuto" required></select>
+            </fieldset>
             <input type="submit" />
         </form>
         <div id="result"></div>
@@ -43,11 +56,22 @@
         <table id="tablacitas">
             <tr>
                 <th>Nombre</th>
-                <th>age</th>
-                <th>codigo</th>
-                <th>hobby</th>
+                <th>Apellidos</th>
+                <th>id</th>
+                <th>Fecha de nacimiento</th>
+                <th>telefono</th>
+                <th>observaciones</th>
+                <th>          </th>
+                <th>Fecha cita</th>
+                <th>Hora cita</th>
             </tr>
         </table>
+
+        <form id="buscarcita">
+            <label for="cita">ID del paciente:</label>
+            <input type="text" id="cita" name="cita" placeholder="id del paciente...">
+            <input type="button" id="botonbuscar" value="Buscar" onclick="buscarcita()">
+        </form>
         <script src='main.js'></script>
     </main>
     <footer>
