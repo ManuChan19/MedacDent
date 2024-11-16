@@ -12,74 +12,128 @@
 
 <body>
     <header>
-        <img src="./img/Medadent_logo.png" alt="MedacDent">
+        <img src="./img/Medadent_logo.png" alt="MedacDent" id="imgLogo">
+        <nav>
+            <button id="nuevacita" onclick="nuevacita()">Nueva Cita</button>
+            <button id="renovacioncita" onclick="renovarcita()">Renovacion Cita</button>
+        </nav>
     </header>
     <main>
-        <form id="my-form">
-            <fieldset>
-                <legend>Datos del paciente</legend>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre del paciente...">
-                <br>
-                <label for="apellidos">Apellidos:</label>
-                <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos del paciente...">
-                <br>
-                <label for="id">ID:</label>
-                <input type="text" id="id" name="id" placeholder="id del paciente...">
-                <br>
-                <label for="fechanacimiento">Fecha de nacimiento:</label>
-                <input type="date" id="fechanacimiento" name="fechanacimiento">
-                <br>
-                <label for="telefono">Telefono:</label>
-                <input type="number" id="telefono" name="telefono" placeholder="Telefono del paciente...">
-                <br>
-                <label for="observaciones">Observaciones:</label>
-                <br>
-                <textarea id="observaciones" name="observaciones" placeholder="Observaciones" rows="4" cols="27"
-                    maxlength="300"></textarea>
-                <br>
-            </fieldset>
-            <fieldset>
-                <legend>Cita</legend>
-                <label for="fechacita">fecha de la cita:</label>
-                <input type="date" id="fechacita" name="fechacita" min="">
-                <br>
-                <label for="horacita">hora de la cita:</label>
-                <select name="hora" id="hora" required></select>
-                <select name="minuto" id="minuto" required></select>
-            </fieldset>
-            <input type="submit" />
-        </form>
-        <div id="result"></div>
+        <div id="Form1">
+            <form id="citaForm">
+                <fieldset>
+                    <legend>Datos del paciente</legend>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre del paciente...">
+                    <br>
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos del paciente...">
+                    <br>
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" placeholder="id del paciente...">
+                    <br>
+                    <label for="fechanacimiento">Fecha de nacimiento:</label>
+                    <input type="date" id="fechanacimiento" name="fechanacimiento">
+                    <br>
+                    <label for="telefono">Telefono:</label>
+                    <input type="number" id="telefono" name="telefono" placeholder="Telefono del paciente...">
+                    <br>
+                    <label for="observaciones">Observaciones:</label>
+                    <br>
+                    <textarea id="observaciones" name="observaciones" placeholder="Observaciones" rows="4" cols="27"
+                        maxlength="300"></textarea>
+                    <br>
+                </fieldset>
+                <fieldset>
+                    <legend>Cita</legend>
+                    <label for="fechacita">fecha de la cita:</label>
+                    <input type="date" id="fechacita" name="fechacita" min="">
+                    <br>
+                    <label for="horacita">hora de la cita:</label>
+                    <select name="hora" id="hora" required></select>
+                    <select name="minuto" id="minuto" required></select>
+                </fieldset>
+                <input type="submit" value="Crear" />
+            </form>
+        </div>
+
 
         <!--Tabla a imprimir resultados-->
-        <table id="tablacitas">
-            <tr>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>id</th>
-                <th>Fecha de nacimiento</th>
-                <th>telefono</th>
-                <th>observaciones</th>
-                <th>          </th>
-                <th>Fecha cita</th>
-                <th>Hora cita</th>
-            </tr>
-        </table>
+        <div>
+            <table id="tablacitas">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>id</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>telefono</th>
+                        <th>observaciones</th>
+                        <th> </th>
+                        <th>Fecha cita</th>
+                        <th>Hora cita</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpotabla">
 
-        <form id="buscarcita">
-            <label for="cita">ID del paciente:</label>
-            <input type="text" id="cita" name="cita" placeholder="id del paciente...">
-            <input type="button" id="botonbuscar" value="Buscar" onclick="buscarcita()">
-        </form>
+                </tbody>
+            </table>
+        </div>
+        <div id="Form3">
+            <form id="buscarcita">
+                <label for="cita">ID del paciente:</label>
+                <input type="text" id="cita" name="cita" placeholder="id del paciente...">
+                <input type="button" id="botonbuscar" value="Buscar" onclick="buscarcita()">
+            </form>
+        </div>
+        <div id="Form2">
+            <form id="actualizarForm">
+                <fieldset>
+                    <legend>Datos del paciente</legend>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre del paciente...">
+                    <br>
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos del paciente...">
+                    <br>
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" placeholder="id del paciente...">
+                    <br>
+                    <label for="fechanacimiento">Fecha de nacimiento:</label>
+                    <input type="date" id="fechanacimiento" name="fechanacimiento">
+                    <br>
+                    <label for="telefono">Telefono:</label>
+                    <input type="number" id="telefono" name="telefono" placeholder="Telefono del paciente...">
+                    <br>
+                    <label for="observaciones">Observaciones:</label>
+                    <br>
+                    <textarea id="observaciones" name="observaciones" placeholder="Observaciones" rows="4" cols="27"
+                        maxlength="300"></textarea>
+                    <br>
+                </fieldset>
+                <fieldset>
+                    <legend>Cita</legend>
+                    <label for="fechacita">fecha de la cita:</label>
+                    <input type="date" id="fechacita" name="fechacita" min="">
+                    <br>
+                    <label for="horacita">hora de la cita:</label>
+                    <select name="hora" id="hora" required></select>
+                    <select name="minuto" id="minuto" required></select>
+                </fieldset>
+                <input type="button" value="Actualizar" onclick="actualizarTabla()" />
+            </form>
+        </div>
         <script src='main.js'></script>
     </main>
     <footer>
-        <a href="facebook.com"><img src="./img/facebook.png" alt=""></a>
-        <a href="google.mail.com"><img src="./img/mail.png" alt=""></a>
-        <a href="instagram.com"><img src="./img/instagram.png" alt=""></a>
-        <img src="./img/whatsapp.png" alt="">
-        <p>687585423</p>
+        <div>
+            <a href="facebook.com"><img src="./img/facebook.png" alt=""></a>
+            <a href="google.mail.com"><img src="./img/mail.png" alt=""></a>
+            <a href="instagram.com"><img src="./img/instagram.png" alt=""></a>
+            <a href=""><img src="./img/whatsapp.png" alt="">
+                <p>687585423</p>
+            </a>
+        </div>
     </footer>
 </body>
 

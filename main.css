@@ -1,0 +1,173 @@
+body {
+    background-color: #FBF9F1;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    
+    top: 0vh;
+    width: 100vw;
+    border-radius: 15px;
+    height: 15vh;
+    box-sizing: border-box;
+    background-color: #FBF9F1;
+}
+
+header img {
+    margin-top: 1vh;
+    margin-left: 1vh;
+    height: 13vh;
+    border-radius: 50%;
+}
+
+header nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -9vh;
+    gap: 3vw;
+}
+
+header nav button {
+    font-size: xx-large;
+    background-color: #92C7CF;
+    cursor: pointer;
+}
+
+main {
+    overflow: scroll;
+    
+    min-height: 75vh;
+    width: 100%;
+    background-color: #92C7CF;
+    display: grid;
+    grid-template-columns: 30vw 30vw;
+    justify-content: space-evenly;
+}
+
+main> :nth-child(4) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    margin-top: 1vh;
+
+    height: fit-content;
+}
+
+main> :nth-child(1) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    z-index: 1;
+    margin-top: 1vh;
+    height: fit-content;
+
+}
+
+main> :nth-child(2) {
+
+    margin-top: 1vh;
+    height: 400px;
+    width: fit-content;
+
+
+}
+
+main> :nth-child(3) {
+    height: 400px;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+#citaForm {
+    min-height: 400px;
+    max-height: fit-content;
+    min-width: fit-content;
+    display: grid;
+    border-radius: 10px;
+    background-color: #E5E1DA;
+    padding: 5px;
+    gap: 10px;
+    
+}
+
+#actualizarForm {
+    min-height: 400px;
+    max-height: fit-content;
+    min-width: fit-content;
+    display: grid;
+    border-radius: 10px;
+    background-color: #E5E1DA;
+    padding: 5px;
+    gap: 10px;
+}
+
+#buscarcita {
+    max-height: fit-content;
+    min-width: fit-content;
+    display: grid;
+    border-radius: 10px;
+    background-color: #E5E1DA;
+    padding: 5px;
+    gap: 10px;
+}
+
+#tablacitas{
+    display: block;
+    width: fit-content;
+    max-height: 420px;
+    overflow: scroll;
+    background-color: #E5E1DA;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#tablacitas tbody tr:nth-child(even){
+    background-color: #92C7CF;
+}
+#tablacitas tbody tr td{
+    min-width: 50px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+footer {
+
+    background-color: #FBF9F1;
+    height: 5vh;
+}
+
+footer div {
+    margin-top: 1vh;
+    display: flex;
+    gap: 1vw;
+    margin-left: 2vw;
+}
+
+footer :last-child {
+    display: flex;
+    gap: 1vw;
+}
+
+footer a img {
+    height: 5vh;
+    border-radius: 50%;
+
+}
+
+@keyframes vanish {
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
