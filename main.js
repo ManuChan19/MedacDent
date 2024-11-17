@@ -39,8 +39,9 @@ form.addEventListener("submit", e => {
       "</td><td>" + retrievedScores[output.codigo - 1].observaciones + "</td><td>" +
       "</td><td>" + retrievedScores[output.codigo - 1].fechacita +
       "</td><td>" + retrievedScores[output.codigo - 1].horacita + ":" + retrievedScores[output.codigo - 1].minutocita +
-      "</td><td><button class='delete${output.codigo}'>Borrar</button>" +
-      "</td><td><button class='edit${output.codigo}'>Editar</button></td></tr>"
+      "</td><td><button id='delete" + output.codigo + "'>Borrar</button>" +
+      "</td><td><button id='edit" + output.codigo + "'>Editar</button></td></tr>";
+    document.getElementById("delete" + output.codigo).addEventListener("click", borrarFila);
 
   } else {
     const output = {
@@ -69,8 +70,10 @@ form.addEventListener("submit", e => {
       "</td><td>" + retrievedScores[output.codigo - 1].observaciones + "</td><td>" +
       "</td><td>" + retrievedScores[output.codigo - 1].fechacita +
       "</td><td>" + retrievedScores[output.codigo - 1].horacita + ":" + retrievedScores[output.codigo - 1].minutocita +
-      "</td><td><button class='delete${output.codigo}'>Borrar</button>" +
-      "</td><td><button class='edit${output.codigo}'>Editar</button></td></tr>"
+      "</td><td><button id='delete" + output.codigo + "'>Borrar</button>" +
+      "</td><td><button id='edit" + output.codigo + "'>Editar</button></td></tr>";
+    document.getElementById("delete" + output.codigo).addEventListener("click", borrarFila);
+
   }
 });
 
@@ -95,8 +98,8 @@ function buscarcita() {
   formulario.elements['fechanacimiento'].value = retrievedScores[i].fechanacimiento;
   formulario.elements['telefono'].value = retrievedScores[i].telefono;
   formulario.elements['observaciones'].value = retrievedScores[i].observaciones;
-  formulario.elements['fechacita'].value = retrievedScores[i].fechacita,
-    formulario.elements['hora'].value = retrievedScores[i].horacita;
+  formulario.elements['fechacita'].value = retrievedScores[i].fechacita;
+  formulario.elements['hora'].value = retrievedScores[i].horacita;
   formulario.elements['minuto'].value = retrievedScores[i].minutocita;
   return i = i;
 }
@@ -128,26 +131,32 @@ function actualizarTabla() {
     localStorage.setItem("save", JSON.stringify(tabla)); // guardamos en localStore
     const tablacita = document.getElementById("cuerpotabla");
     let retrievedScores = JSON.parse(localStorage.getItem("save"));
-    document.getElementById(output.codigo).innerHTML = "<tr id="+output.codigo+"><td>"
-    + retrievedScores[output.codigo - 1].nombre +
-    "</td><td>" + retrievedScores[output.codigo - 1].apellidos +
-    "</td><td>" + retrievedScores[output.codigo - 1].id +
-    "</td><td>" + retrievedScores[output.codigo - 1].fechanacimiento +
-    "</td><td>" + retrievedScores[output.codigo - 1].telefono +
-    "</td><td>" + retrievedScores[output.codigo - 1].observaciones + "</td><td>" +
-    "</td><td>" + retrievedScores[output.codigo - 1].fechacita +
-    "</td><td>" + retrievedScores[output.codigo - 1].horacita + ":" + retrievedScores[output.codigo - 1].minutocita +
-    "</td><td><button class='delete"+output.codigo+"'>Borrar</button>" +
-    "</td><td><button class='edit"+output.codigo+"' onclick="+borrarFila()+">Editar</button></td></tr>"
+
+    document.getElementById(output.codigo).innerHTML = `<tr id=' fila${output.codigo}'><td>
+    ${retrievedScores[output.codigo - 1].nombre}</td><td> ${retrievedScores[output.codigo - 1].apellidos}
+    </td><td> ${retrievedScores[output.codigo - 1].id}
+    </td><td> ${retrievedScores[output.codigo - 1].fechanacimiento}
+    </td><td> ${retrievedScores[output.codigo - 1].telefono}
+    </td><td> ${retrievedScores[output.codigo - 1].observaciones}</td><td>
+    </td><td> ${retrievedScores[output.codigo - 1].fechacita}
+    </td><td> ${retrievedScores[output.codigo - 1].horacita} : ${retrievedScores[output.codigo - 1].minutocita}
+    </td><td><button id='delete${output.codigo}' >Borrar</button>
+    </td><td><button id='edit${output.codigo}' onclick=''>Editar</button></td></tr>`;
+    document.getElementById("delete" + output.codigo).addEventListener("click", borrarFila);
   }
 }
 
 //Boton para borrar fila
-function borrarFila(){
-  const element = document.getElementById(output.codigo);
-  if (document.getElementById(output.codigo)){
-  element.remove();}
+function borrarFila(e) {
+  let retrievedScores = JSON.parse(localStorage.getItem("save")); //cargamos el localStore
+  const index = retrievedScores.indexOf(e.target.parentElement.parentElement.id - 1);
+  retrievedScores.splice(index, 1); //borramos el elemento en el array de localStore
+  localStorage.setItem("save", JSON.stringify(retrievedScores)); //guardamos
+
+  const parent = e.target.parentElement.parentElement; //apuntamos a la fila
+  parent.remove();//borramos la fila de la tabla
 }
+
 
 
 /*Para fecha y hora de la cita no te deje poner una en el pasado*/
