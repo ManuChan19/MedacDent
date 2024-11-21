@@ -1,4 +1,6 @@
-let i;
+let i=0;
+let tabla = [];
+localStorage.setItem("save", JSON.stringify(tabla));
 
 (function () {
 
@@ -109,7 +111,7 @@ function buscarcita() {
   while (retrievedScores[i].id !== output.id && i < retrievedScores.length) {
     i++
   }
-  let formulario = document.getElementById('actualizarForm');
+  let formulario = document.getElementById('citaForm');
   formulario.elements['nombre'].value = retrievedScores[i].nombre;
   formulario.elements['apellidos'].value = retrievedScores[i].apellidos;
   formulario.elements['id'].value = retrievedScores[i].id;
@@ -125,7 +127,7 @@ function buscarcita() {
 //Boton para actualizar la tabla con los datos nuevos
 
 function actualizarTabla() {
-  const form = document.getElementById("actualizarForm");
+  const form = document.getElementById("citaForm");
   const {
     elements
   } = form; //metemos todos los datos en la constante elements
@@ -149,7 +151,6 @@ function actualizarTabla() {
     localStorage.setItem("save", JSON.stringify(tabla)); // guardamos en localStore
     const tablacita = document.getElementById("cuerpotabla");
     let retrievedScores = JSON.parse(localStorage.getItem("save"));
-    console.log(output.codigo);
     document.getElementById(output.codigo).innerHTML = "<tr id='"+ output.codigo +"'><td>" + retrievedScores[output.codigo - 1].nombre +
       "</td><td>" + retrievedScores[output.codigo - 1].apellidos +
       "</td><td>" + retrievedScores[output.codigo - 1].id +
@@ -173,21 +174,17 @@ function borrarFila(event) {
   const parent = event.target.parentElement.parentElement; //apuntamos a la fila
   parent.remove();//borramos la fila de la tabla
   if (retrievedScores.length < 1) {
-    console.log("miau");
     document.getElementById("cuerpotabla").innerHTML += "<tr><td colspan='8'> dato vacio </td></tr>"
   }
 }
 
 //Boton para editar fila
 function editarFila(event){
-  console.log("hola1");
   let retrievedScores = JSON.parse(localStorage.getItem("save")); //cargamos el localStore
   let id=(event.target.parentElement.parentElement.id-1);
-  console.log(id);
   const formulariocita = document.getElementById('buscarcita');
   const { elements } = formulariocita;
-  console.log("hola2");
-  let formulario = document.getElementById('actualizarForm');
+  let formulario = document.getElementById('citaForm');
   formulario.elements['nombre'].value = retrievedScores[id].nombre;
   formulario.elements['apellidos'].value = retrievedScores[id].apellidos;
   formulario.elements['id'].value = retrievedScores[id].id;
@@ -197,7 +194,6 @@ function editarFila(event){
   formulario.elements['fechacita'].value = retrievedScores[id].fechacita;
   formulario.elements['hora'].value = retrievedScores[id].horacita;
   formulario.elements['minuto'].value = retrievedScores[id].minutocita;
-  console.log("hola3");
   return i = id;
 
 }
@@ -240,19 +236,19 @@ function editarFila(event){
 //botones de ocultar y mostrar
 
 function nuevacita() {
-  document.getElementById('Form1').style.animation = 'appear 2s both';
-  document.getElementById('Form2').style.animation = 'vanish 2s both';
-  document.getElementById('Form3').style.animation = 'vanish 2s both';
+  document.getElementById('submitForm').style.animation = 'appear 2s both';
+  document.getElementById('actualizarForm').style.animation = 'vanish 2s both';
+  document.getElementById('buscarForm').style.animation = 'vanish 2s both';
 }
 
 function renovarcita() {
-  document.getElementById('Form2').style.animation = 'appear 2s both';
-  document.getElementById('Form1').style.animation = 'vanish 2s both';
-  document.getElementById('Form3').style.animation = 'appear 2s both';
+  document.getElementById('actualizarForm').style.animation = 'appear 2s both';
+  document.getElementById('submitForm').style.animation = 'vanish 2s both';
+  document.getElementById('buscarForm').style.animation = 'appear 2s both';
 }
 
 (function () {
-  document.getElementById('Form2').style.animation = 'vanish .1s both';
-  document.getElementById('Form1').style.animation = 'vanish .1s both';
-  document.getElementById('Form3').style.animation = 'vanish .1s both';
+  document.getElementById('actualizarForm').style.animation = 'vanish .1s both';
+  document.getElementById('submitForm').style.animation = 'vanish .1s both';
+  document.getElementById('buscarForm').style.animation = 'vanish .1s both';
 })()

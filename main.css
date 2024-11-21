@@ -36,22 +36,22 @@ header nav button {
 }
 
 main {
-    overflow: scroll;
-    
     min-height: 75vh;
-    width: 100%;
+    min-width: fit-content;
     background-color: #92C7CF;
     display: grid;
-    grid-template-columns: 30vw 30vw;
+    grid-template-columns: 10vw 30vw;
     justify-content: space-evenly;
 }
 
-main> :nth-child(4) {
-    grid-column: 1/2;
-    grid-row: 1/2;
-    margin-top: 1vh;
-
-    height: fit-content;
+@media (width < 1000px) {
+    main{
+        grid-template-columns: 1fr;
+       justify-items: center;
+    }
+    main> :nth-child(3) {
+        grid-row: 2/3;
+    }
 }
 
 main> :nth-child(1) {
@@ -73,15 +73,18 @@ main> :nth-child(2) {
 }
 
 main> :nth-child(3) {
-    height: 400px;
-    overflow: auto;
+    grid-column: 1/2;
+    height: fit-content;
     margin-top: 10px;
+    margin-bottom: 10px;
+    
 }
 
 #citaForm {
     min-height: 400px;
     max-height: fit-content;
     min-width: fit-content;
+    max-width: 30vw;
     display: grid;
     border-radius: 10px;
     background-color: #E5E1DA;
@@ -90,20 +93,9 @@ main> :nth-child(3) {
     
 }
 
-#actualizarForm {
-    min-height: 400px;
-    max-height: fit-content;
-    min-width: fit-content;
-    display: grid;
-    border-radius: 10px;
-    background-color: #E5E1DA;
-    padding: 5px;
-    gap: 10px;
-}
-
 #buscarcita {
     max-height: fit-content;
-    min-width: fit-content;
+    width: fit-content;
     display: grid;
     border-radius: 10px;
     background-color: #E5E1DA;
@@ -112,8 +104,9 @@ main> :nth-child(3) {
 }
 
 #tablacitas{
+    margin-right: 20px;
     display: block;
-    width: fit-content;
+    min-width: fit-content;
     max-height: 420px;
     overflow: scroll;
     background-color: #E5E1DA;
